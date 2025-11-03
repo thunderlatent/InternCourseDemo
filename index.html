@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 創意私廚:iOS 影像辨識與 AI 互動決策</title>
+    <!-- 載入 Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- 載入 Heroicons 圖示庫 --><script type="module" src="https://unpkg.com/heroicons@2.1.1/24/outline/index.js"></script>
+    <style>
+        /* 載入 Inter 字體 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 導覽列 --><nav class="bg-white/90 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- 課程 Logo/名稱 --><div class="flex-shrink-0 flex items-center">
+                    <svg class="h-8 w-auto text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 15l.813.904zM12 15l.813.904L12 15zm.813-10.096L12 5l.813-.096zM12 5l-.813-.096L12 5zm-2.188 10l.814.904L9.812 15zm2.188-10l-.814-.096L12.001 5zM6.512 7.187l.813-.096.53 4.413-.813.096-.53-4.413zM4.904 9.187l.813-.096.53 4.413-.813.096-.53-4.413zM18.096 9.187l-.813-.096-.53 4.413.813.096.53-4.413zM19.488 7.187l-.813-.096-.53 4.413.813.096.53-4.413zM12 21a9 9 0 100-18 9 9 0 000 18zM12 18a6 6 0 100-12 6 6 0 000 12z" />
+                    </svg>
+                    <span class="ml-3 font-bold text-xl text-gray-900">AI 創意私廚</span>
+                </div>
+                <!-- 導覽連結 (PC) --><div class="flex-grow flex justify-center">
+                    <div class="hidden md:flex md:space-x-10">
+                        <a href="#intro" class="text-gray-600 hover:text-indigo-600 font-medium">課程介紹</a>
+                        <a href="#how-it-works" class="text-gray-600 hover:text-indigo-600 font-medium">運作流程</a>
+                        <a href="#audience" class="text-gray-600 hover:text-indigo-600 font-medium">適合對象</a>
+                        <a href="#instructor" class="text-gray-600 hover:text-indigo-600 font-medium">關於講師</a>
+                    </div>
+                </div>
+                <!-- 手機版選單按鈕 (未來可擴充) --><div class="md:hidden">
+                    <!-- Mobile menu button --></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 區塊1: Hero 課程主頁 --><header class="bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- 文案 --><div>
+                    <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">
+                        2小時 AI 實作解析
+                    </span>
+                    <h1 class="mt-4 text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
+                        解密 AI 創意私廚
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-600">
+                        一堂 2 小時的「AI App 誕生實錄」。我們將以實例操作與技術解析的方式,深度解密一個真正「活」的 AI App。
+                    </p>
+                    <p class="mt-2 text-lg text-gray-600">
+                        您將親眼目睹 AI 如何看懂冰箱照片、主動聊天詢問、並決策一份專屬食譜。
+                    </p>
+                </div>
+                <!-- 圖片 --><div class="hidden md:block">
+                    <!-- 使用 AI 生成的廚房場景,強調 AI 互動 --><img src="https://image.pollinations.ai/prompt/photorealistic%20kitchen%20with%20a%20modern%20AI%20app%20interface%20on%20a%20tablet%2C%20displaying%20ingredients%20and%20chat%20bubble%20for%20a%20chef%20character%2C%20soft%20lighting" alt="AI App 創意廚房場景" class="rounded-lg shadow-xl aspect-video md:aspect-square object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 區塊2: 你可以學到 (What you'll learn) --><section id="intro" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+                    你可以學到
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    觀賞一個現代 AI App 的完整運作流程,專注於 AI 如何「看懂」、「扮演」與「指揮」。
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 卡片 1: AI 的眼睛 --><div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="mt-5 text-xl font-semibold text-gray-900">AI 的「眼睛」</h3>
+                    <p class="mt-2 text-gray-600">
+                        解析 Apple 內建的 `Vision` 框架,如何在手機本地「看懂」相機照片中的食材。
+                    </p>
+                </div>
+                <!-- 卡片 2: AI 的大腦 --><div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="mt-5 text-xl font-semibold text-gray-900">AI 的「大腦」</h3>
+                    <p class="mt-2 text-gray-600">
+                        了解 AI (LLM) 如何扮演「創意私廚」的角色,讓 AI 互動變得有趣且人性化。
+                    </p>
+                </div>
+                <!-- 卡片 3: AI 的互動決策 --><div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.602-3.75c-.026-.082-.026-.164 0-.246-.085-.278-.174-.55-.265-.816A11.959 11.959 0 0012 2.724z" />
+                        </svg>
+                    </div>
+                    <h3 class="mt-5 text-xl font-semibold text-gray-900">AI 的「互動決策」</h3>
+                    <p class="mt-2 text-gray-600">
+                        揭秘 AI 如何判斷何時該聊天提問,何時該下達指令 (Function Calling)。
+                    </p>
+                </div>
+                <!-- 卡片 4: 完整流程 --><div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5 0l-4.5 16.5" />
+                        </svg>
+                    </div>
+                    <h3 class="mt-5 text-xl font-semibold text-gray-900">完整技術流程</h3>
+                    <p class="mt-2 text-gray-600">
+                        觀摩從「iOS 相機」->「Vision 辨識」->「AI 詢問」->「AI 決策」->「App 介面」的完整串接。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊3: 課程核心流程 (How It Works) --><section id="how-it-works" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+                    AI 創意私廚:完整互動流程
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    這不只是「一問一答」,這是一個完整的「辨識 → 詢問 → 決策」互動閉環。
+                </p>
+            </div>
+            
+            <!-- 流程圖 --><div class="relative">
+                <!-- 連接線 (在桌面版顯示) --><div class="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-indigo-200" style="transform: translateY(-2rem);"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                    <!-- 步驟 1: 辨識 (看見) --><div class="text-center z-10">
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-indigo-600 text-white shadow-lg mx-auto border-4 border-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0012 6c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-1.419 0-2.795-.311-4.002-.875M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-semibold text-gray-900">1. AI 的「眼睛」</h3>
+                        <p class="mt-3 text-gray-600">
+                            啟動相機,使用 iOS `Vision` 框架在手機本地辨識出照片中的食材 (例如:雞蛋、牛奶)。
+                        </p>
+                        <!-- AI 生成圖片:廚師拿手機拍照冰箱 --><img src="https://image.pollinations.ai/prompt/photorealistic%20chef%20taking%20a%20picture%20of%20a%20refrigerator%20filled%20with%20ingredients%2C%20modern%20kitchen%2C%20dynamic%20shot" alt="廚師拍照冰箱" class="mt-4 rounded-lg shadow-md max-w-full mx-auto">
+                    </div>
+
+                    <!-- 步驟 2: 詢問 (聊天) --><div class="text-center z-10">
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-indigo-600 text-white shadow-lg mx-auto border-4 border-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M12 20.25c-4.418 0-8-3.134-8-7s3.582-7 8-7 8 3.134 8 7-3.582 7-8 7z" />
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-semibold text-gray-900">2. AI 的「大腦」</h3>
+                        <p class="mt-3 text-gray-600">
+                            AI 收到食材清單後,主動在聊天室提問:「我看到了雞蛋和牛奶,您想吃點『鹹的』還是『甜的』?」
+                        </p>
+                        <!-- AI 生成圖片:手機上的聊天介面,AI 詢問料理偏好 --><img src="https://image.pollinations.ai/prompt/photorealistic%20smartphone%20showing%20an%20AI%20chat%20interface%20with%20a%20chef%20avatar%2C%20asking%20'sweet%20or%20savory'%20after%20ingredients%20are%20scanned%2C%20user%20replying%20'savory'" alt="AI 聊天詢問" class="mt-4 rounded-lg shadow-md max-w-full mx-auto">
+                    </div>
+
+                    <!-- 步驟 3: 決策 (行動) --><div class="text-center z-10">
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-indigo-600 text-white shadow-lg mx-auto border-4 border-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-semibold text-gray-900">3. AI 的「決策」</h3>
+                        <p class="mt-3 text-gray-600">
+                            使用者回覆「鹹的」後,AI 最終決策,呼叫 App 內部功能,展示「法式起司烘蛋」的食譜介面。
+                        </p>
+                        <!-- AI 生成圖片:手機顯示精美食譜介面 --><img src="https://image.pollinations.ai/prompt/photorealistic%20smartphone%20displaying%20a%20beautifully%20designed%20recipe%20interface%20for%20a%20'French%20Cheese%20Omelette'%20after%20AI%20interaction%2C%20close-up%20shot" alt="AI 顯示食譜" class="mt-4 rounded-lg shadow-md max-w-full mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊4: 適合對象 --><section id="audience" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <!-- AI 生成圖片:一群人在會議室討論 AI 應用 --><img src="https://image.pollinations.ai/prompt/photorealistic%20diverse%20group%20of%20professionals%20in%20a%20modern%20meeting%20room%2C%20discussing%20AI%20applications%20on%20a%20large%20screen%2C%20collaborative%20atmosphere" alt="適合對象" class="rounded-lg shadow-xl">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+                        這堂課適合誰?
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        不需具備程式背景!這是一堂「實作展示課」。您只需要帶著一顆好奇心,來見證 AI 應用的誕生。
+                    </p>
+                    <ul class="mt-6 space-y-4">
+                        <li class="flex items-start">
+                            <svg class="flex-shrink-0 h-6 w-6 text-indigo-600 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            <span class="ml-3 text-gray-700">想知道 AI App 如何「思考」和「行動」的主管或 PM</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="flex-shrink-0 h-6 w-6 text-indigo-600 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            <span class="ml-3 text-gray-700">尋求 AI 如何「趣味化」導入產品靈感的行銷或企劃</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="flex-shrink-0 h-6 w-6 text-indigo-600 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            <span class="ml-3 text-gray-700">想了解 `Vision` 框架與 AI 決策流程的 iOS 工程師</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="flex-shrink-0 h-6 w-6 text-indigo-600 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            <span class="ml-3 text-gray-700">零基礎但想親眼「見證」一個 AI App 如何運作的任何人</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊5: 講師介紹 --><section id="instructor" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+                    關於講師
+                </h2>
+            </div>
+            <div class="flex flex-col md:flex-row items-center md:items-start bg-gray-50 p-8 md:p-12 rounded-lg shadow-lg max-w-4xl mx-auto">
+                <!-- AI 生成的藝術頭像 --><img src="https://image.pollinations.ai/prompt/abstract%20artistic%20portrait%20of%20a%20male%20software%20engineer%2C%20profile%20picture%2C%20digital%20art%2C%20lines%20of%20code%20and%20circuits%20background%2C%20blue%20and%20indigo%20tones" alt="講師 陳裕銘 (藝術圖)" class="rounded-full h-36 w-36 md:h-48 md:w-48 flex-shrink-0 object-cover shadow-md">
+                <div class="mt-6 md:mt-0 md:ml-10 text-center md:text-left">
+                    <h3 class="text-3xl font-bold text-gray-900">陳裕銘( Jimmy )</h3>
+                    <p class="mt-1 text-lg text-indigo-600 font-semibold">
+                        iOS App 工程師
+                    </p>
+                    <p class="mt-4 text-gray-600">
+                        Jimmy 在 iOS App 開發領域擁有深厚的研究與實戰經驗,同時也致力於探索如何將人工智慧互動模式融入 App 設計中。
+                    </p>
+                    <p class="mt-2 text-gray-600">
+                        本次課程,Jimmy 將為您展示 iOS App 在 AI 時代的無限可能,激盪出創新應用的火花。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊6: 結尾 (移除報名按鈕) --><section class="py-16 md:py-24 bg-indigo-700 text-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold">
+                體驗 AI 與 iOS 的完美結合
+            </h2>
+            <p class="mt-4 text-lg">
+                這堂課程將為您開啟 AI App 設計的全新視野。
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>
